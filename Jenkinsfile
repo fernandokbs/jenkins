@@ -1,19 +1,27 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Verificar tools') {
             steps {
-                echo 'Building..'
+                sh 'docker info'
             }
         }
-        stage('Test') {
+
+        stage('Start docker') {
             steps {
-                echo 'Testing..'
+                sh 'docker compose up -d'
             }
         }
-        stage('Deploy') {
+
+        stage('Instalar dependencias') {
             steps {
-                echo 'Deploying....'
+                sh 'docker compose exec app composer install'
+            }
+        }
+
+        stage('Run test') {
+            steps {
+                sh 'docker compose exec app php artisan test'
             }
         }
     }
