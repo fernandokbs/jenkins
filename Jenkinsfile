@@ -7,9 +7,15 @@ pipeline {
             }
         }
 
-        stage('Start docker') {
+        stage('Build docker') {
             steps {
                 sh 'docker build -t app-test-jenkins .'
+            }
+        }
+
+        stage('Start docker') {
+            steps {
+                sh 'docker run -dit --name app-test-jenkins app-test-jenkins'
             }
         }
 
