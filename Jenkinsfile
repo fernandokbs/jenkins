@@ -15,7 +15,7 @@ pipeline {
 
         stage('Instalar dependencias') {
             steps {
-                sh 'docker-compose exec app composer install'
+                sh 'docker-compose exec app composer install --no-cache'
             }
         }
 
