@@ -9,19 +9,19 @@ pipeline {
 
         stage('Start docker') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker build -t app-test-jenkins .'
             }
         }
 
         stage('Instalar dependencias') {
             steps {
-                sh 'docker-compose exec app composer install --no-cache'
+                sh 'docker exec app-test-jenkins composer install --no-cache'
             }
         }
 
         stage('Run test') {
             steps {
-                sh 'docker-compose exec app ./vendor/bin/phpunit tests'
+                sh 'docker exec app-test-jenkins ./vendor/bin/phpunit tests'
             }
         }
     }
