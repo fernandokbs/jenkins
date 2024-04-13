@@ -25,4 +25,18 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            sh 'docker stop app-test-jenkins'
+            sh 'docker rm app-test-jenkins'
+        }
+
+        success {
+            slackSend(channel: '#robots', message: "SUCCESS: The build completed successfully.")
+        }
+
+        failure {
+            slackSend(channel: '#robots', message: "FAILURE: The build failed.")
+        }
+    }
 }
