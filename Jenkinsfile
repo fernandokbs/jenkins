@@ -19,12 +19,6 @@ pipeline {
             }
         }
 
-        stage('Instalar dependencias') {
-            steps {
-                sh 'docker exec app-test-jenkins composer install --no-cache'
-            }
-        }
-
         stage('Run test') {
             steps {
                 sh 'docker exec app-test-jenkins ./vendor/bin/phpunit tests'
