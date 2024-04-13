@@ -1,6 +1,19 @@
 pipeline {
     agent any
     stages {
+        stage('Initialization') {
+            steps {
+                echo "Build URL: ${env.BUILD_URL}"
+                echo "Build Number: ${env.BUILD_NUMBER}"
+                echo "Job Name: ${env.JOB_NAME}"
+                echo "Jenkins URL: ${env.JENKINS_URL}"
+                script {
+                    def buildUser = env.BUILD_USER_ID ?: 'unknown'
+                    echo "Build triggered by: ${buildUser}"
+                }
+            }
+        }
+
         stage('Verificar tools') {
             steps {
                 sh 'docker info'
