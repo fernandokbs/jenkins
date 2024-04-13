@@ -9,19 +9,19 @@ pipeline {
 
         stage('Start docker') {
             steps {
-                sh 'docker compose up -d'
+                sh 'docker-compose up -d'
             }
         }
 
         stage('Instalar dependencias') {
             steps {
-                sh 'docker compose exec app composer install'
+                sh 'docker-compose exec app composer install'
             }
         }
 
         stage('Run test') {
             steps {
-                sh 'docker compose exec app php artisan test'
+                sh 'docker-compose exec app php artisan test'
             }
         }
     }
