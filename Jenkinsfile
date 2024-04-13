@@ -21,7 +21,7 @@ pipeline {
 
         stage('Run test') {
             steps {
-                sh 'docker-compose exec app php artisan test'
+                sh 'docker-compose exec app ./vendor/bin/phpunit tests'
             }
         }
     }
