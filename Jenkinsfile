@@ -49,7 +49,7 @@ pipeline {
         }
 
         failure {
-            slackSend(channel: '#robots', message: "FAILURE: The build failed.")
+            slackSend(channel: '#robots', message: "FAILURE: The build failed. ")
         }
     }
 }
