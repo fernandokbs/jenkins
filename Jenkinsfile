@@ -9,12 +9,6 @@ pipeline {
 
         stage('Build docker') {
             steps {
-                echo 'Building docker image'
-            }
-        }
-
-        stage('Build docker') {
-            steps {
                 sh 'docker build -t app-test-jenkins .'
             }
         }
