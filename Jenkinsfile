@@ -7,12 +7,12 @@ pipeline {
             }
         }
 
-        stage('Build docker') {
+        stage('Verificar 222') {
             steps {
-                sh 'docker build -t app-test-jenkins .'
+                echo 'hola'
             }
         }
-        
+
         stage('Run container') {
             steps {
                 sh 'docker run -dit --name app-test-jenkins app-test-jenkins' 
