@@ -25,4 +25,11 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            sh 'docker stop app-test-jenkins'
+            sh 'docker rm app-test-jenkins'
+        }
+    }
 }
