@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent Ubuntu-agente
     stages {
         stage('Verificar tools') {
             steps {
@@ -37,7 +37,6 @@ pipeline {
     post {
         always {
             sh 'docker stop app-test-jenkins'
-            sh 'docker rm app-test-jenkins'
         }
     }
 }
