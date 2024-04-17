@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sshagent (credentials: ['deploy']) {
+                sshagent (credentials: ['1418774c-6a1f-4c63-ab86-56c1c7032d1f']) {
                     sh './deploy.sh'
                 }
             }
