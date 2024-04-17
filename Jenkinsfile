@@ -1,5 +1,5 @@
 pipeline {
-    agent Ubuntu-agente
+    agent agente1
     stages {
         stage('Verificar tools') {
             steps {
