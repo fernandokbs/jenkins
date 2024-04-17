@@ -24,6 +24,12 @@ pipeline {
                 sh 'docker exec app-test-jenkins ./vendor/bin/phpunit tests'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh 'deploy.sh'
+            }
+        }
     }
 
     post {
