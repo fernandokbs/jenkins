@@ -39,5 +39,13 @@ pipeline {
             sh 'docker stop app-test-jenkins'
             sh 'docker rm app-test-jenkins'
         }
+
+        success {
+            slackSend(channel: '#robots', message: "Se completo el build")            
+        }
+
+        failure {
+            slackSend(channel: '#robots', message: "Error build")
+        }
     }
 }
