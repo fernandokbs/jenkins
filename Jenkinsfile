@@ -8,12 +8,6 @@ pipeline {
             }
         }
 
-        stage('Build docker image') {
-            steps {
-                sh 'docker build -t app-test-jenkins .'
-            }
-        }
-
         stage('Run docker image') {
             steps {
                 sh 'docker run -dit --name app-test-jenkins app-test-jenkins'
