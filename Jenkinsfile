@@ -1,5 +1,5 @@
 pipeline {
-    // Definimos en donde queremos ejectuar este pipelinea
+    // Definimos en donde queremos ejectuar este pipeline [any, none, label]
     agent { label 'agente1' }
 
     stages {
