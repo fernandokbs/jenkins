@@ -34,6 +34,7 @@ pipeline {
                         sh ''' 
                             sonar-scanner \
                                 -Dsonar.host.url=http://sonarqube:9000
+                                -Dsonar.login=squ_9c65d91dbe3e9e1534fa9f86e1468d191839eb7d
                         '''
                     }
                 }
