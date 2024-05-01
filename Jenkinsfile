@@ -30,7 +30,7 @@ pipeline {
         stage('Sonarqube') {
             steps {
                 script {
-                    docker.image('sonarsource/sonar-scanner-cli:latest') {
+                    docker.image('sonarsource/sonar-scanner-cli:latest').inside() {
                         sh 'sonar-scanner'
                     }
                 }
