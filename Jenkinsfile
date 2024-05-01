@@ -1,6 +1,6 @@
 pipeline {
     // Definimos en donde queremos ejectuar este pipeline [any, none, label]
-    agent { label 'agente1' }
+    agent any
 
     stages {
         stage('Verficar tools') {
@@ -9,11 +9,11 @@ pipeline {
             }
         }
 
-        stage('Build docker') {
-            steps {
-                sh 'docker build -t app-jenkins .'
-            }
-        }
+        // stage('Build docker') {
+        //     steps {
+        //         sh 'docker build -t app-jenkins .'
+        //     }
+        // }
 
         stage('Run docker') {
             steps {
@@ -35,13 +35,13 @@ pipeline {
             sh 'docker rm app-jenkins'
         }
 
-        success {
-            // Enviamos mensaje al canal #tutorial cuando el build ya terminado sin problemas
-            slackSend(channel: "#tutorial", message: "SUCCESS! test")
-        }
+        // success {
+        //     // Enviamos mensaje al canal #tutorial cuando el build ya terminado sin problemas
+        //     slackSend(channel: "#tutorial", message: "SUCCESS! test")
+        // }
 
-        failure {
-            slackSend(channel: "#tutorial", message: "SUCCESS! test")
-        }
+        // failure {
+        //     slackSend(channel: "#tutorial", message: "SUCCESS! test")
+        // }
     }
 }
