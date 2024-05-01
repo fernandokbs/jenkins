@@ -26,6 +26,16 @@ pipeline {
                 sh 'docker exec app-jenkins ./vendor/bin/phpunit tests'
             }
         }
+
+        stage('Sonarqube') {
+            steps {
+                script {
+                    docker.image('sonarsource/sonar-scanner-cli:latest') {
+                        sh 'sonar-scanner'
+                    }
+                }
+            }
+        }
     }
 
     post {
