@@ -2,6 +2,10 @@ pipeline {
     // Definimos en donde queremos ejectuar este pipeline [any, none, label]
     agent any
 
+    environment {
+        SONAR_QUBE_TOKEN = credentials('Sonarqube-jenkins') 
+    }
+
     stages {
         stage('Verficar tools') {
             steps {
@@ -36,7 +40,7 @@ pipeline {
                                 -Dsonar.projectKey=jenkins-php \
                                 -Dsonar.sources=src \
                                 -Dsonar.host.url=http://sonarqube:9000 \
-                                -Dsonar.login=squ_9c65d91dbe3e9e1534fa9f86e1468d191839eb7d
+                                -Dsonar.token=$SONAR_QUBE_TOKEN
                         '''
                     }
                 }
