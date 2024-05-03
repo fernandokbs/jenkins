@@ -30,7 +30,7 @@ pipeline {
         stage('Sonarqube') {
             steps {
                 script {
-                    docker.image('sonarsource/sonar-scanner-cli:latest').inside {
+                    docker.image('sonarsource/sonar-scanner-cli:latest').inside('--network ci-network') {
                         sh '''
                             sonar-scanner \
                                 -Dsonar.host.url=http://sonarqube:9000
