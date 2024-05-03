@@ -34,6 +34,8 @@ pipeline {
                         sh '''
                             sonar-scanner \
                                 -Dsonar.host.url=http://sonarqube:9000 \
+                                -Dsonar.projectKey=jenkins-php \
+                                -Dsonar.src=src \
                                 -Dsonar.token=squ_1a1bc1d76ad85cad8780afd9a8e0d8bb359d3fa1
                         '''
                     }
