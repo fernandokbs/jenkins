@@ -6,8 +6,23 @@ services:
     container_name: jenkins
     ports:
       - 8080:8080
+    networks:
+      - ci-network # Tanto sonarquibe como jenkins deben de estar en la misma red para poder comunicarse
     volumes:
-      - jenkins_tutorial:/var/jenkins_home
+      - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock # Importante esta linea, caso contrario no podremos usar docker dentro de docker
+
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqube
+    networks:
+      - ci-network # Tanto sonarquibe como jenkins deben de estar en la misma red para poder comunicarse
+    ports:
+      - 9000:9000
+    
 volumes:
-  jenkins_tutorial:
+  jenkins_home:
+
+networks:
+  ci-network:
+    external: true
